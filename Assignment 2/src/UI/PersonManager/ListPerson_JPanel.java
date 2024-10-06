@@ -5,7 +5,9 @@
 package UI.PersonManager;
 import Model.Person;
 import Model.PersonDirectory;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -15,16 +17,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListPerson_JPanel extends javax.swing.JPanel {
     PersonDirectory PersonList;
+    JPanel UserProcessContainer;
 
     /**
      * Creates new form ListPerson_JPanel
      */
-    public ListPerson_JPanel(PersonDirectory PersonList) {
+    public ListPerson_JPanel(JPanel container,PersonDirectory PersonList) {
         initComponents();
         this.PersonList = PersonList;
+        UserProcessContainer=container;
         
         populateTable();
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +49,11 @@ public class ListPerson_JPanel extends javax.swing.JPanel {
         Delete_Button = new javax.swing.JButton();
 
         Back_Button.setText(">>>Back");
+        Back_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Back_ButtonActionPerformed(evt);
+            }
+        });
 
         ListOfPerson_Title.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         ListOfPerson_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -62,6 +73,11 @@ public class ListPerson_JPanel extends javax.swing.JPanel {
         ScrollPane.setViewportView(Person_Table);
 
         ViewDetails_Button.setText("View Details");
+        ViewDetails_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewDetails_ButtonActionPerformed(evt);
+            }
+        });
 
         Delete_Button.setText("Delete");
         Delete_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +129,51 @@ public class ListPerson_JPanel extends javax.swing.JPanel {
 
     private void Delete_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_ButtonActionPerformed
                 // TODO add your handling code here:
+                int selectedRow = Person_Table.getSelectedRow();
+        if(selectedRow>=0){
+            int DialogButton = JOptionPane.YES_NO_OPTION;
+            int DialogResult = JOptionPane.showConfirmDialog(null, "Do you want to delete?", "Warning", DialogButton);
+            if(DialogResult == JOptionPane.YES_OPTION){
+                Person person = (Person) Person_Table.getValueAt(selectedRow, 0);
+                PersonList.deletePerson(person);
+                populateTable();
+                
+            }
+            
+        }
+        
+        else{
+           JOptionPane.showMessageDialog(null, "No Profile Selected", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_Delete_ButtonActionPerformed
+
+    private void ViewDetails_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetails_ButtonActionPerformed
+        // TODO add your handling code here:
+        int selectedRow=Person_Table.getSelectedRow();
+        if(selectedRow>=0){
+            Person person=(Person)Person_Table.getValueAt(selectedRow,0);
+            ViewPerson_JPanel viewperson_panel=new ViewPerson_JPanel(UserProcessContainer,PersonList, person);
+            UserProcessContainer.add("ViewPerson_JPanel",viewperson_panel);
+            CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+            layout.next(UserProcessContainer);
+            
+        
+        
+        
+        }else {
+            JOptionPane.showMessageDialog(null,"Please select a profile to view","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+        
+    }//GEN-LAST:event_ViewDetails_ButtonActionPerformed
+
+    private void Back_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_ButtonActionPerformed
+        // TODO add your handling code here:
+        UserProcessContainer.remove(this);
+        CardLayout layout=(CardLayout) UserProcessContainer.getLayout();
+        layout.previous(UserProcessContainer);
+    }//GEN-LAST:event_Back_ButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -125,7 +185,7 @@ public class ListPerson_JPanel extends javax.swing.JPanel {
     private javax.swing.JButton ViewDetails_Button;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
+    void populateTable() {
         DefaultTableModel model = (DefaultTableModel) Person_Table.getModel();
             
         model.setRowCount(0);

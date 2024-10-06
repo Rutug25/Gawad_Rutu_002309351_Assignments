@@ -8,6 +8,8 @@ import Model.Person;
 import Model.PersonDirectory;
 import UI.PersonManager.AddPerson_JPanel;
 import UI.PersonManager.ListPerson_JPanel;
+import UI.PersonManager.ViewPerson_JPanel;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,7 +45,7 @@ public class MainJFrame extends javax.swing.JFrame {
         ListPerson_Button = new javax.swing.JButton();
         SearchPerson_Button = new javax.swing.JButton();
         Search_Text = new javax.swing.JTextField();
-        RightComponent = new javax.swing.JPanel();
+        UserProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,8 +99,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         SplitPane.setLeftComponent(LeftComponent);
 
-        RightComponent.setLayout(new java.awt.CardLayout());
-        SplitPane.setRightComponent(RightComponent);
+        UserProcessContainer.setLayout(new java.awt.CardLayout());
+        SplitPane.setRightComponent(UserProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,20 +110,26 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+            .addComponent(SplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPerson_ButtonActionPerformed
-        AddPerson_JPanel panel = new AddPerson_JPanel(PersonList);
-        SplitPane.setRightComponent(panel);  
+        AddPerson_JPanel addperson_panel = new AddPerson_JPanel(UserProcessContainer,PersonList);
+        UserProcessContainer.add("AddPerson_JPanel",addperson_panel);
+        
+        CardLayout layout = (CardLayout)UserProcessContainer.getLayout();
+        layout.next(UserProcessContainer);  
     }//GEN-LAST:event_AddPerson_ButtonActionPerformed
 
     private void ListPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListPerson_ButtonActionPerformed
-        ListPerson_JPanel panel = new ListPerson_JPanel(PersonList);
-        SplitPane.setRightComponent(panel);        
+        ListPerson_JPanel listperson_panel = new ListPerson_JPanel(UserProcessContainer,PersonList);
+        UserProcessContainer.add("ListPerson_JPanel",listperson_panel);
+        
+        CardLayout layout = (CardLayout)UserProcessContainer.getLayout();
+        layout.next(UserProcessContainer);        
     }//GEN-LAST:event_ListPerson_ButtonActionPerformed
 
     private void SearchPerson_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchPerson_ButtonActionPerformed
@@ -132,8 +140,12 @@ public class MainJFrame extends javax.swing.JFrame {
             
         }
         else {
-            ViewPerson_JPanel panel = new ViewPerson_JPanel(PersonList,search);
-            SplitPane.setRightComponent(panel);
+            ViewPerson_JPanel viewperson_panel = new ViewPerson_JPanel(UserProcessContainer,PersonList,result);
+            UserProcessContainer.add("ViewPerson_JPanel",viewperson_panel);
+        
+            CardLayout layout = (CardLayout)UserProcessContainer.getLayout();
+            layout.next(UserProcessContainer);
+            
            
         }
          Search_Text.setText("");   
@@ -178,10 +190,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton AddPerson_Button;
     private javax.swing.JPanel LeftComponent;
     private javax.swing.JButton ListPerson_Button;
-    private javax.swing.JPanel RightComponent;
     private javax.swing.JButton SearchPerson_Button;
     private javax.swing.JTextField Search_Text;
     private javax.swing.JSplitPane SplitPane;
+    private javax.swing.JPanel UserProcessContainer;
     // End of variables declaration//GEN-END:variables
 
     private void populateData() {
