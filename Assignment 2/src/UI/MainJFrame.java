@@ -49,6 +49,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        LeftComponent.setBackground(new java.awt.Color(255, 153, 153));
+
         AddPerson_Button.setText("Add Person");
         AddPerson_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +101,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         SplitPane.setLeftComponent(LeftComponent);
 
+        UserProcessContainer.setBackground(new java.awt.Color(255, 204, 204));
         UserProcessContainer.setLayout(new java.awt.CardLayout());
         SplitPane.setRightComponent(UserProcessContainer);
 

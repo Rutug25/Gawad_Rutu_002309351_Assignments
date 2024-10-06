@@ -78,6 +78,8 @@ public class AddPerson_JPanel extends javax.swing.JPanel {
         Create_Button = new javax.swing.JButton();
         Back_Button = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         PersonProfile_Title.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         PersonProfile_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PersonProfile_Title.setText("Person Profile");

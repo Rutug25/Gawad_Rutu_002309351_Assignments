@@ -48,6 +48,8 @@ public class ListPerson_JPanel extends javax.swing.JPanel {
         ViewDetails_Button = new javax.swing.JButton();
         Delete_Button = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
         Back_Button.setText(">>>Back");
         Back_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
