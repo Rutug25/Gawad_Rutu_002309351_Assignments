@@ -13,8 +13,16 @@ public class Address {
     private String City;
     private String State;
     private String ZIP;
-    private String UnitNumber;
+    private short UnitNumber;
     private String PhoneNumber;
+    
+    public short getUnitNumber() {
+        return UnitNumber;
+    }
+    
+    public void setUnitNumber(String UnitNumber) {
+        this.UnitNumber = Short.parseShort(UnitNumber);
+    }
 
     public String getPhoneNumber() {
         return PhoneNumber;
@@ -56,12 +64,5 @@ public class Address {
         this.ZIP = ZIP;
     }
 
-    public String getUnitNumber() {
-        return UnitNumber;
-    }
-
-    public void setUnitNumber(String UnitNumber) {
-        this.UnitNumber = UnitNumber;
-    }
     
 }

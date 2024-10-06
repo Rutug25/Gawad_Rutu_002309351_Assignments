@@ -321,7 +321,7 @@ public class AddPerson_JPanel extends javax.swing.JPanel {
         String FirstName = FirstName_Text.getText();
         String LastName = LastName_Text.getText();
         String SSN = SSN_Text.getText();
-        String Age = Age_Text.getText();
+        int Age;
         String WorkStreet = WorkStreetName_Text.getText();
         String WorkCity = WorkCity_Text.getText();
         String WorkState = WorkState_Text.getText();
@@ -334,6 +334,19 @@ public class AddPerson_JPanel extends javax.swing.JPanel {
         String HomeZIPCode = HomeZIPCode_Text.getText();
         String HomePhoneNumber = HomePhoneNumber_Text.getText();
         String WorkPhoneNumber = WorkPhoneNumber_Text.getText();
+        
+        if (FirstName.isBlank() || LastName.isBlank() || SSN.isBlank()|| WorkStreet.isBlank() || WorkCity.isBlank() || WorkState.isBlank() || WorkUnitNumber.isBlank()||WorkPhoneNumber.isBlank()||WorkZIPCode.isBlank() || HomeStreet.isBlank() || HomeCity.isBlank() || HomeState.isBlank() || HomeUnitNumber.isBlank()||HomePhoneNumber.isBlank()||HomeZIPCode.isBlank()){
+            JOptionPane.showMessageDialog(null,"All fields are mandatory");
+            return;
+        }
+        try {
+            Age=Integer.parseInt(Age_Text.getText());
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Age should be a number","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
       
         Person p = PersonList.addPerson();
       

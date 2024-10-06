@@ -11,8 +11,8 @@ package Model;
 public class Person {
     private String FirstName;
     private String LastName;
-    private String SSN;
-    private String Age;
+    private long SSN;
+    private int Age;
     private Address HomeAddress;
     private Address WorkAddress;
     
@@ -37,19 +37,19 @@ public class Person {
         this.LastName = LastName;
     }
 
-    public String getSSN() {
+    public long getSSN() {
         return SSN;
     }
 
     public void setSSN(String SSN) {
-        this.SSN = SSN;
+        this.SSN = Long.parseLong(SSN);
     }
 
-    public String getAge() {
+    public int getAge() {
         return Age;
     }
 
-    public void setAge(String Age) {
+    public void setAge(int Age) {
         this.Age = Age;
     }
 
@@ -73,6 +73,8 @@ public class Person {
     public String toString(){
         return FirstName;
     }
+
+   
 
     
     

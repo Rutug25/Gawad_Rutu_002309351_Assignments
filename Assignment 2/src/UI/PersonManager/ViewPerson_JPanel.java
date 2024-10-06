@@ -331,7 +331,7 @@ public class ViewPerson_JPanel extends javax.swing.JPanel {
         String FirstName = FirstName_Text.getText();
         String LastName = LastName_Text.getText();
         String SSN = SSN_Text.getText();
-        String Age = Age_Text.getText();
+        int Age = 0;
         String WorkStreet = WorkStreetName_Text.getText();
         String WorkCity = WorkCity_Text.getText();
         String WorkState = WorkState_Text.getText();
@@ -345,10 +345,19 @@ public class ViewPerson_JPanel extends javax.swing.JPanel {
         String HomePhoneNumber = HomePhoneNumber_Text.getText();
         String WorkPhoneNumber = WorkPhoneNumber_Text.getText();
         
-        if (FirstName.isBlank() || LastName.isBlank() || SSN.isBlank() || Age.isBlank() || WorkStreet.isBlank() || WorkCity.isBlank() || WorkState.isBlank() || WorkUnitNumber.isBlank()||WorkPhoneNumber.isBlank()||WorkZIPCode.isBlank() || HomeStreet.isBlank() || HomeCity.isBlank() || HomeState.isBlank() || HomeUnitNumber.isBlank()||HomePhoneNumber.isBlank()||HomeZIPCode.isBlank()){
+        if (FirstName.isBlank() || LastName.isBlank() || SSN.isBlank() || WorkStreet.isBlank() || WorkCity.isBlank() || WorkState.isBlank() || WorkUnitNumber.isBlank()||WorkPhoneNumber.isBlank()||WorkZIPCode.isBlank() || HomeStreet.isBlank() || HomeCity.isBlank() || HomeState.isBlank() || HomeUnitNumber.isBlank()||HomePhoneNumber.isBlank()||HomeZIPCode.isBlank()){
             JOptionPane.showMessageDialog(null,"All fields are mandatory");
             return;
         }
+        
+        try {
+            Age=Integer.parseInt(Age_Text.getText());
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Age should be a number","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }    
         person.setFirstName(FirstName);
         person.setLastName(LastName);
         person.setSSN(SSN);
@@ -432,16 +441,16 @@ public class ViewPerson_JPanel extends javax.swing.JPanel {
     private void refreshTextFields() {
         FirstName_Text.setText(person.getFirstName());
         LastName_Text.setText(person.getLastName());
-        SSN_Text.setText(person.getSSN());
-        Age_Text.setText(person.getAge());
+        SSN_Text.setText(String.valueOf(person.getSSN()));
+        Age_Text.setText(String.valueOf(person.getAge()));
         HomeStreetName_Text.setText(person.getHomeAddress().getStreet());
-        HomeUnitNumber_Text.setText(person.getHomeAddress().getUnitNumber());
+        HomeUnitNumber_Text.setText(String.valueOf(person.getHomeAddress().getUnitNumber()));
         HomeCity_Text.setText(person.getHomeAddress().getCity());
         HomeState_Text.setText(person.getHomeAddress().getState());
         HomeZIPCode_Text.setText(person.getHomeAddress().getZIP());
         HomePhoneNumber_Text.setText(person.getHomeAddress().getPhoneNumber());
         WorkStreetName_Text.setText(person.getWorkAddress().getStreet());
-        WorkUnitNumber_Text.setText(person.getWorkAddress().getUnitNumber());
+        WorkUnitNumber_Text.setText(String.valueOf(person.getWorkAddress().getUnitNumber()));
         WorkCity_Text.setText(person.getWorkAddress().getCity());
         WorkState_Text.setText(person.getWorkAddress().getState());
         WorkZIPCode_Text.setText(person.getWorkAddress().getZIP());

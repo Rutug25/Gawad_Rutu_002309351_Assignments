@@ -201,8 +201,8 @@ public class MainJFrame extends javax.swing.JFrame {
         
         p1.setFirstName("Rutu");
         p1.setLastName("Gawad");
-        p1.setSSN("123-456-789");
-        p1.setAge("23");
+        p1.setSSN("123456789");
+        p1.setAge(23);
         p1.getHomeAddress().setStreet("Highland Ave");
         p1.getHomeAddress().setCity("Boston"); 
         p1.getHomeAddress().setState("Massachusetts");
@@ -220,8 +220,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p2.setFirstName("Emily");
         p2.setLastName("Doe");
-        p2.setSSN("456-786-654");
-        p2.setAge("35");
+        p2.setSSN("456786654");
+        p2.setAge(30);
         p2.getHomeAddress().setStreet("Stuart St");
         p2.getHomeAddress().setCity("San Francisco"); 
         p2.getHomeAddress().setState("California");
@@ -239,8 +239,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p3.setFirstName("John");
         p3.setLastName("Clarkson");
-        p3.setSSN("127-455-874");
-        p3.setAge("38");
+        p3.setSSN("127455874");
+        p3.setAge(38);
         p3.getHomeAddress().setStreet("Kendall St");
         p3.getHomeAddress().setCity("Miami"); 
         p3.getHomeAddress().setState("Florida");
@@ -258,8 +258,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p4.setFirstName("Cristian");
         p4.setLastName("Smith");
-        p4.setSSN("123-465-234");
-        p4.setAge("39");
+        p4.setSSN("123465234");
+        p4.setAge(25);
         p4.getHomeAddress().setStreet("Lowell St");
         p4.getHomeAddress().setCity("Seattle"); 
         p4.getHomeAddress().setState("Washington");
@@ -278,8 +278,8 @@ public class MainJFrame extends javax.swing.JFrame {
  
         p5.setFirstName("Saloni");
         p5.setLastName("Dixit");
-        p5.setSSN("243-779-789");
-        p5.setAge("38");
+        p5.setSSN("243779789");
+        p5.setAge(38);
         p5.getHomeAddress().setStreet("Dudley St");
         p5.getHomeAddress().setCity("Mumbai"); 
         p5.getHomeAddress().setState("Maharashtra");
